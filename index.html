@@ -10,23 +10,24 @@
     <link rel="stylesheet" href="./assets/css/styles.css" />
 </head>
 
-<body class="w-full min-h-[100vh] grid grid-cols-[250px_auto] bg-bg">
+<body class="w-full min-h-[100vh] grid grid-cols-[100%] sm:grid-cols-[250px_auto] bg-bg">
     <!-- Nav Starting -->
-    <section
-        class="sticky top-[0px] w-full h-[100vh] flex flex-col gap-[2rem] bg-bg-2 text-[1rem] text-text-1 z-30 border-r-2 border-light-border-color transition-all duration-150 ease-in-out">
+    <section id="sidenav-container"
+        class="fixed left-[-100%] sm:sticky sm:left-[0px] top-[0px] w-full h-[100vh] flex flex-col gap-[2rem] bg-bg-2 text-[1rem] text-text-1 z-30 border-r-2 border-light-border-color transition-all duration-300 ease-in-out max-w-[250px]">
         <!-- Nav Header Begins -->
-        <div class="p-d-pad flex gap-2 items-center text-[1.3rem] nav-item">
+        <div id="sidenav-header"
+            class="p-d-pad flex gap-2 items-center text-[1.3rem] nav-item transition-all duration-150 ease-in-out">
             <svg class="fill-icons-color" xmlns="http://www.w3.org/2000/svg" height="48" width="48">
                 <path d="M25.5 19.5V6H42v13.5ZM6 25.5V6h16.5v19.5ZM25.5 42V22.5H42V42ZM6 42V28.5h16.5V42Z" />
             </svg>
-            <span class="sidenav-text">Dashboard</span>
+            <span class="sidenav-text transition-all duration-150 ease-in-out">Dashboard</span>
         </div>
         <!-- Nav Header Ends -->
 
         <!-- Nav Body Begins -->
         <nav>
             <div
-                class="flex items-center gap-[0.5rem] border-l-[5px] border-transparent p-[0.5rem_2rem] cursor-pointer bg-bg-3 border-light-red fill-light-red nav-item">
+                class="flex items-center gap-[0.5rem] border-l-[5px] border-transparent p-[0.5rem_2rem] cursor-pointer bg-bg-3 border-light-red fill-light-red nav-item transition-all duration-150 ease-in-out">
                 <svg class="fill-inherit w-[25px] h-[25px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
                     <path d="M8 42V18L24 6l16 12v24H28V28h-8v14Z" />
                 </svg>
@@ -104,7 +105,9 @@
             </div>
         </nav>
         <!-- Nav Footer Ends -->
-        <div class="absolute flex w-full bottom-[1rem] p-[0.5rem_2rem] border-light-border-color bg-bg-2 nav-item"
+
+        <!-- Collapse Sidenav Icon -->
+        <div class="hidden sm:flex absolute w-full bottom-[1rem] p-[0.5rem_2rem] border-light-border-color bg-bg-2 nav-item"
             onclick="collapseSideNav()">
             <svg id="sidenav-controller"
                 class="w-[35px] h-[35px] cursor-pointer stroke-icons-color hover:stroke-light-red transition-all duration-300 ease-in-out transform hover:scale-125"
@@ -114,6 +117,21 @@
                 <path d="M5 12h14M5 12l4 4m-4-4 4-4" />
             </svg>
         </div>
+
+        <!-- Hide Sidenav Icon -->
+        <div class="absolute flex sm:hidden w-full bottom-[1rem] p-[0.5rem_2rem] border-light-border-color bg-bg-2 nav-item justify-center"
+            onclick="closeSideNav()">
+            <svg id="sidenav-controller"
+                class="w-[45px] h-[45px] cursor-pointer stroke-light-red transition-all duration-300 ease-in-out"
+                xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#2c3e50" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <rect width="16" height="16" x="4" y="4" rx="2" />
+                <path d="m10 10 4 4m0-4-4 4" />
+            </svg>
+        </div>
+
+
     </section>
     <!-- Nav Ending -->
 
@@ -122,8 +140,20 @@
         <!-- Header Starts -->
         <header
             class="sticky w-full top-[0px] left-[0px] flex flex-col gap-[1.5rem] text-text-1 pad-d-pad z-10 bg-bg-2 border-b-2 border-light-border-color p-d-pad">
-            <section class="flex justify-between">
-                <span class="flex gap-[1rem] items-center w-full">
+
+            <!-- Header Top Section -->
+            <section class="flex justify-between gap-[1.5rem]">
+                <span class="flex gap-[1rem] items-center flex-[1_1_70%]">
+
+                    <!-- Ham Icon -->
+                    <svg onclick="openSideNav()"
+                        class="block sm:hidden w-[25px] h-[25px] cursor-pointer stroke-icons-color hover:stroke-light-red"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <path d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <!-- Search Icon -->
                     <svg class="w-[25px] h-[25px] cursor-pointer stroke-icons-color hover:stroke-light-red"
                         xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round"
                         stroke-width="2" viewBox="0 0 24 24">
@@ -131,10 +161,10 @@
                         <circle cx="10" cy="10" r="7" />
                         <path d="m21 21-6-6" />
                     </svg>
-                    <input class="w-full max-w-[45vw] rounded-full bg-bg-3 p-[0.2rem_1rem]" type="search"
-                        placeholder="Search" id="search-input" />
+                    <input class="w-full max-w-[45vw] rounded-full bg-bg-3 p-[0.2rem_1rem] max-[430px]:hidden"
+                        type="search" placeholder="Search" id="search-input" />
                 </span>
-                <span class="flex gap-[1rem] items-center justify-end w-full">
+                <span class="flex gap-[1rem] items-center justify-end">
                     <svg class="w-[25px] h-[25px] cursor-pointer stroke-icons-color hover:stroke-light-red"
                         xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round"
                         stroke-width="2" viewBox="0 0 24 24">
@@ -144,10 +174,13 @@
                     </svg>
                     <img class="w-[35px] rounded-full" src="https://avatars.githubusercontent.com/u/62774412?v=4"
                         alt="profile" />
-                    <span class="font-semibold">Rahul Biswakarma</span>
+                    <span class="hidden md:block font-semibold">Rahul Biswakarma</span>
                 </span>
             </section>
-            <section class="relative flex justify-between flex-wrap gap-[1rem]">
+            <!-- Header top section ends -->
+
+            <!-- Header bottom section -->
+            <section class="relative flex justify-between flex-wrap gap-[1rem] shrink grow">
                 <span class="flex gap-[1rem] items-center">
                     <img class="w-[60px] rounded-full" src="https://avatars.githubusercontent.com/u/62774412?v=4"
                         alt="profile" />
@@ -172,6 +205,7 @@
                     </button>
                 </span>
             </section>
+            <!-- Header bottom section ends -->
         </header>
         <!-- Header Ends -->
 
