@@ -59,7 +59,7 @@ function closeSideNav() {
 }
 
 function closeSearchDiv() {
-  document.getElementById("search-div").style.top = "-100%";
+  document.getElementById("search-div").style.top = "-200%";
 }
 
 function openSearchDiv() {
