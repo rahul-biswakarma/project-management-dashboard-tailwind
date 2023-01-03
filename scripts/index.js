@@ -2,7 +2,6 @@ var sideNavExpanded = true;
 
 function collapseSideNav() {
   if (sideNavExpanded) {
-    document.querySelector("body").style.gridTemplateColumns = "100px auto";
     document.querySelectorAll(".sidenav-text").forEach((element) => {
       element.style.display = "none";
     });
@@ -18,12 +17,11 @@ function collapseSideNav() {
     if (window.innerWidth <= 650) {
       document.getElementById("sidenav-container").style.position = "fixed";
     }
-    document.querySelector("body").style.gridTemplateColumns = "250px auto";
     document.querySelectorAll(".sidenav-text").forEach((element) => {
       element.style.display = "block";
     });
     document.querySelectorAll(".nav-item").forEach((element) => {
-      element.style.padding = "0.5rem 2rem";
+      element.style.padding = "0.5rem 4rem 0.5rem 2rem";
       element.style.justifyContent = "flex-start";
     });
     document.getElementById("sidenav-header").style.padding = "1.5rem";
@@ -48,3 +46,4 @@ function openSideNav() {
 function closeSideNav() {
   document.getElementById("sidenav-container").style.left = "-100%";
 }
+
