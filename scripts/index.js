@@ -1,4 +1,5 @@
 var sideNavExpanded = true;
+var headerButtonConatinerExpanded = false;
 
 function collapseSideNav() {
   if (sideNavExpanded) {
@@ -39,6 +40,16 @@ function collapseSideNav() {
 //   }
 // };
 
+function toogleHeaderButtonContainer() {
+  if (headerButtonConatinerExpanded) {
+    document.getElementById("header-button-container").style.display = "none";
+    headerButtonConatinerExpanded = false;
+  } else {
+    document.getElementById("header-button-container").style.display = "flex";
+    headerButtonConatinerExpanded = true;
+  }
+}
+
 function openSideNav() {
   document.getElementById("sidenav-container").style.left = "0px";
 }
@@ -47,3 +58,10 @@ function closeSideNav() {
   document.getElementById("sidenav-container").style.left = "-100%";
 }
 
+function closeSearchDiv() {
+  document.getElementById("search-div").style.top = "-100%";
+}
+
+function openSearchDiv() {
+  document.getElementById("search-div").style.top = "0px";
+}
